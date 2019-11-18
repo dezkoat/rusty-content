@@ -1,22 +1,17 @@
-use iron::prelude::*;
-use iron::status;
+use mongodb::db::Database;
 
-pub fn post_read_all(_req: &mut Request) -> IronResult<Response> {
-    Ok(Response::with((status::Ok, "This should return post".to_owned())))
+pub struct PostService {
+    db: Database,
 }
 
-pub fn post_read(_req: &mut Request) -> IronResult<Response> {
-    Ok(Response::with((status::Ok, "This should return post".to_owned())))
-}
+impl PostService {
 
-pub fn post_create(_req: &mut Request) -> IronResult<Response> {
-    Ok(Response::with((status::Ok, "This should return post".to_owned())))
-}
+    pub fn new(db: Database) -> PostService {
+        PostService { db: db }
+    }
 
-pub fn post_update(_req: &mut Request) -> IronResult<Response> {
-    Ok(Response::with((status::Ok, "This should return post".to_owned())))
-}
+    pub fn post_read_all(&mut self) -> String {
+        String::from("Test")
+    }
 
-pub fn post_delete(_req: &mut Request) -> IronResult<Response> {
-    Ok(Response::with((status::Ok, "This should return post".to_owned())))
 }
