@@ -6,6 +6,5 @@ use crate::services::initialize;
 use iron::prelude::*;
 
 fn main() {
-    let service = initialize();
-    Iron::new(service.router).http("localhost:3000").unwrap();
+    Iron::new(initialize()).http("localhost:3000").unwrap();
 }
