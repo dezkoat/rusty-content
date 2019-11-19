@@ -1,10 +1,12 @@
-mod services;
+mod component;
+mod model;
+mod other;
 
 extern crate iron;
 
-use crate::services::initialize;
+use crate::component::rusty_handler;
 use iron::prelude::*;
 
 fn main() {
-    Iron::new(initialize()).http("localhost:3000").unwrap();
+    Iron::new(rusty_handler()).http("localhost:3000").unwrap();
 }
