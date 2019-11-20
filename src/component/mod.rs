@@ -11,10 +11,10 @@ pub fn rusty_handler() -> Router {
     let mut router = Router::new();
 
     // Initialize libs
-    let database = db_connect("data");
+    let db_connection = Arc::new(db_connect());
 
     // Initialize services
-    let post_service = Arc::new(PostService::new());
+    let post_service = Arc::new(PostService::new(db_connection.clone()));
 
     // Initialize apis
     let post_api = PostApi::new(post_service.clone());
